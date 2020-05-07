@@ -66,5 +66,8 @@
     </div>
 </main>
 
+<footer>
+    <p>Copyright &copy; HaseTano </p>
+</footer>
 </body>
 </html>
