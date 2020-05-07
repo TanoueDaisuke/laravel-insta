@@ -5,6 +5,18 @@ main {
 
 .post_wrapper {
   width: 40%;
+
+  // タブレット
+  @include tab {
+    width: 80%;
+  }
+
+  // スマホ
+  @include sp {
+    width: 90%;
+  }
+
+
   margin: auto;
   border: 1px solid rgba(0,0,0,.125);
 
