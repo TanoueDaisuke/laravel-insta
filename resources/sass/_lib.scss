@@ -15,3 +15,10 @@
     @content
   }
 };
+
+.hover {
+  transition: color 0.3s 0s ease-in-out;
+  &:hover {
+    color: #1056B3;
+  }
+}

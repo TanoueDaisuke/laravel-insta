@@ -130,7 +130,7 @@ a {
 }
 
 a:visited {
-  color: inherti;
+  color: inherit;
 }
 
 /* change colours to suit your needs */
@@ -181,6 +181,14 @@ select {
   vertical-align: middle;
 }
 
+.hover {
+  transition: color 0.3s 0s ease-in-out;
+}
+
+.hover:hover {
+  color: #1056B3;
+}
+
 header {
   border-bottom: 1px solid rgba(0, 0, 0, 0.0975);
 }
@@ -219,5 +227,99 @@ header {
 
 .header_inner nav ul .profile_btn i {
   font-size: 1.5em;
+}
+
+main {
+  background-color: #FAFAFA;
+  padding-top: 30px;
+}
+
+.post_wrapper {
+  width: 40%;
+  margin: auto;
+  border: 1px solid rgba(0, 0, 0, 0.125);
+}
+
+.post_wrapper img {
+  width: 100%;
+}
+
+.post_top {
+  display: flex;
+  justify-content: space-between;
+  padding: 15px;
+  background-color: #F8F8F8;
+}
+
+.post_top .left {
+  display: flex;
+  align-items: center;
+}
+
+.post_top .left img {
+  width: 30px;
+  border-radius: 50%;
+  margin-right: 10px;
+}
+
+.post_top .left p {
+  font-size: 12px;
+}
+
+.post_top a {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.post_bottom_wrapper {
+  padding: 15px 15px 0;
+  background-color: #fff;
+}
+
+.post_bottom_wrapper .inner {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.icons {
+  font-size: 23px;
+  padding-bottom: 5px;
+}
+
+.icons .comment {
+  display: inline-block;
+  transform: scaleX(-1);
+}
+
+.post_bottom {
+  font-size: 10px;
+}
+
+.post_bottom span {
+  font-weight: bold;
+  margin-right: 3px;
+}
+
+.post_bottom p {
+  margin-bottom: 3px;
+}
+
+.post_bottom .date {
+  padding: 10px 0;
+  font-size: 7px;
+  -moz-columns: #999;
+       columns: #999;
+}
+
+form {
+  padding: 10px 0;
+  background-color: #fff;
+}
+
+form input {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  border: 0;
 }
 

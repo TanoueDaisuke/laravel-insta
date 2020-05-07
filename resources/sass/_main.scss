@@ -1,0 +1,94 @@
+main {
+  background-color: #FAFAFA;
+  padding-top: 30px;
+}
+
+.post_wrapper {
+  width: 40%;
+  margin: auto;
+  border: 1px solid rgba(0,0,0,.125);
+
+  img {
+    width: 100%; // メイン画像
+  }
+}
+
+.post_top {
+  display: flex;
+  justify-content: space-between;
+  padding: 15px;
+  background-color: #F8F8F8;
+
+  .left {
+    display: flex;
+    align-items: center;
+
+    img {
+      width: 30px;
+      border-radius: 50%;
+      margin-right: 10px;
+    }
+
+    p {
+      font-size: 12px;
+    }
+  }
+
+  a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}
+
+.post_bottom_wrapper {
+  padding: 15px 15px 0;
+  background-color: #fff;
+
+  .inner {
+    border-bottom: 1px solid rgba(0,0,0,.1);
+  }
+}
+
+.icons {
+  font-size: 23px;
+  padding-bottom: 5px;
+
+  .comment {
+    display: inline-block;
+    transform: scaleX(-1); // 左右反転
+  }
+}
+
+.post_bottom {
+  font-size: 10px;
+
+  span {
+    font-weight: bold;
+    margin-right: 3px;
+  }
+
+  p {
+    margin-bottom: 3px;
+  }
+
+  .date {
+    padding: 10px 0;
+    font-size: 7px;
+    columns: #999;
+  }
+}
+
+form {
+  padding: 10px 0;
+  background-color: #fff;
+
+  input {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    border: 0;
+  }
+}
+
+
