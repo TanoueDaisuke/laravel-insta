@@ -319,8 +319,7 @@ main {
 .post_bottom .date {
   padding: 10px 0;
   font-size: 7px;
-  -moz-columns: #999;
-       columns: #999;
+  color: #999;
 }
 
 form {
