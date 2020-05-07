@@ -194,6 +194,10 @@ header {
   align-items: center;
 }
 
+.header_inner h1 {
+  padding-top: 6px;
+}
+
 .header_inner nav {
   width: 25%;
   min-width: 100px;
