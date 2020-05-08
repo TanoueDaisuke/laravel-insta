@@ -1,0 +1,41 @@
+header {
+  border-bottom: 1px solid rgba(0, 0, 0, .0975);
+}
+
+.header_inner {
+  width: 92%;
+  padding: 10px 0;
+  margin: auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  
+  h1 {
+    padding-top: 6px;
+  }
+
+  nav {
+    width: 25%;
+    min-width: 100px; // レスポンシブ用
+
+
+    ul {
+      display: flex;
+      justify-content: center;
+
+      .post_btn a {
+        padding: 10px 13px;
+        font-size: 10px;
+        background-color: #027BFF;
+        color: white;
+        border-radius: 5px;
+
+        margin-right: 20px;
+      }
+
+      .profile_btn i {
+        font-size: 1.5em;
+      }
+    }
+  }
+}

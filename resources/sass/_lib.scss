@@ -1,0 +1,24 @@
+@mixin pc {
+  @media screen and (min-width: 981px){
+    @content
+  }
+};
+
+@mixin tab {
+  @media screen and (max-width: 980px){
+    @content
+  }
+};
+
+@mixin sp {
+  @media screen and (max-width: 599px){
+    @content
+  }
+};
+
+.hover {
+  transition: color 0.3s 0s ease-in-out;
+  &:hover {
+    color: #1056B3;
+  }
+}
