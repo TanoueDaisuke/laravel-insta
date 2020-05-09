@@ -1,0 +1,75 @@
+@import '../share/share'; // shareフォルダ内のまとめ
+
+.auth_wrapper {
+  width: 50%;
+  @include tab {
+    width: 80%;
+  }
+  @include sp {
+    width: 90%;
+  }
+
+  margin: auto;
+  text-align: center;
+  background-color: #fff;
+  border-radius: 5px;
+
+  padding: 50px 15%;
+  @include tab {
+    padding: 40px 10%;
+  }
+  @include sp {
+    padding: 40px 5%;
+  }
+
+  h2 {
+    margin-bottom: 15px;
+  }
+
+  .register_under_logo {
+    color: #6c757d;
+    margin-bottom: 10px;
+  }
+
+  input {
+    display: block;
+    width: 100%;
+    padding: 5px;
+    border-radius: 5px;
+    margin: 5px 0 10px;
+    border: 1px solid #ced4da;
+  }
+  
+  button {
+    width: 100%;
+    padding: 5px 0;
+    margin: 10px 0 25px;
+    background-color: #007bff;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    color: white;
+  }
+
+  .error {
+    color: red;
+    font-size: 10px;
+  }
+
+  p {
+    font-size: 10px;
+
+    a.hover {
+      color: #007bff;
+  
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+}
+
+footer {
+  position: absolute;
+  bottom: 0;
+}

@@ -16,6 +16,16 @@
   }
 };
 
+html, body {
+  min-height: 100vh; // footerを最下部に
+  background-color: #F8F8F8;
+}
+
+main {
+  background-color: #FAFAFA;
+  padding: 30px 0;
+}
+
 .hover {
   transition: color 0.3s 0s ease-in-out;
   &:hover {
