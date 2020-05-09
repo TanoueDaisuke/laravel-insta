@@ -1,6 +1,6 @@
 @import '../share/share'; // shareフォルダ内のまとめ
 
-.login_wrapper {
+.auth_wrapper {
   width: 50%;
   @include tab {
     width: 80%;
@@ -14,7 +14,7 @@
   background-color: #fff;
   border-radius: 5px;
 
-  padding: 40px 15%;
+  padding: 50px 15%;
   @include tab {
     padding: 40px 10%;
   }
@@ -24,6 +24,11 @@
 
   h2 {
     margin-bottom: 15px;
+  }
+
+  .register_under_logo {
+    color: #6c757d;
+    margin-bottom: 10px;
   }
 
   input {

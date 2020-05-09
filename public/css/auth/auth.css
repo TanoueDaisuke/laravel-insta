@@ -256,44 +256,49 @@ footer p {
   font-size: 10px;
 }
 
-.login_wrapper {
+.auth_wrapper {
   width: 50%;
   margin: auto;
   text-align: center;
   background-color: #fff;
   border-radius: 5px;
-  padding: 40px 15%;
+  padding: 50px 15%;
 }
 
 @media screen and (max-width: 980px) {
-  .login_wrapper {
+  .auth_wrapper {
     width: 80%;
   }
 }
 
 @media screen and (max-width: 599px) {
-  .login_wrapper {
+  .auth_wrapper {
     width: 90%;
   }
 }
 
 @media screen and (max-width: 980px) {
-  .login_wrapper {
+  .auth_wrapper {
     padding: 40px 10%;
   }
 }
 
 @media screen and (max-width: 599px) {
-  .login_wrapper {
+  .auth_wrapper {
     padding: 40px 5%;
   }
 }
 
-.login_wrapper h2 {
+.auth_wrapper h2 {
   margin-bottom: 15px;
 }
 
-.login_wrapper input {
+.auth_wrapper .register_under_logo {
+  color: #6c757d;
+  margin-bottom: 10px;
+}
+
+.auth_wrapper input {
   display: block;
   width: 100%;
   padding: 5px;
@@ -302,7 +307,7 @@ footer p {
   border: 1px solid #ced4da;
 }
 
-.login_wrapper button {
+.auth_wrapper button {
   width: 100%;
   padding: 5px 0;
   margin: 10px 0 25px;
@@ -313,20 +318,20 @@ footer p {
   color: white;
 }
 
-.login_wrapper .error {
+.auth_wrapper .error {
   color: red;
   font-size: 10px;
 }
 
-.login_wrapper p {
+.auth_wrapper p {
   font-size: 10px;
 }
 
-.login_wrapper p a.hover {
+.auth_wrapper p a.hover {
   color: #007bff;
 }
 
-.login_wrapper p a.hover:hover {
+.auth_wrapper p a.hover:hover {
   text-decoration: underline;
 }
 
