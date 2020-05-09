@@ -19,3 +19,5 @@ package-lock.json
 public/js/app.js
 public/mix-manifest.json
 
+# コンパイル後のcssはいじらないので管理外に
+public/css
