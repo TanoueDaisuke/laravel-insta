@@ -14,11 +14,13 @@ use Illuminate\Support\Facades\Auth;
 |
 */
 
-Route::get('/', 'HomeController@index')->name('top');
-
-Route::resource('posts', 'PostsController', [
-    'only' => ['create', 'store'] // 後ほど追加→ 'edit', 'edit', 'update', 'destroy'
-]);
+Route::group(['middleware' => 'auth'], function () {
+    Route::get('/', 'HomeController@index')->name('top');
+    
+    Route::resource('posts', 'PostsController', [
+        'only' => ['create', 'store'] // 後ほど追加→ 'edit', 'edit', 'update', 'destroy'
+    ]);
+});
 
 Auth::routes();
 
