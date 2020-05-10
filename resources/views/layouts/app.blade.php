@@ -38,5 +38,7 @@
 <footer>
     <p>Copyright &copy; HaseTano </p>
 </footer>
+
+    @yield('scripts') {{-- jsがある場合用 --}}
 </body>
 </html>
