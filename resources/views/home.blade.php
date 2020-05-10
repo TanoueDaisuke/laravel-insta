@@ -1,23 +1,50 @@
-@extends('layouts.app')
+@extends('layouts/app')
+
+@section('styles')
+    <link href="{{ asset('/css/top.css') }}" rel="stylesheet">
+@endsection
 
 @section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">Dashboard</div>
+    @foreach($posts as $post)
+        <div class="post_wrapper">
+            <div class="post_top">   
+                <div class="left">
+                    <a href="#"><img src="{{ asset('/img/nadeshiko.png') }}" alt=""> {{-- 投稿ユーザーのアイコン --}}</a>
+                    <a href="#" class="hover"><p>{{ $post->user->name }}</p></a> {{-- 投稿ユーザー名 --}}                
+                </div>
+                <a href="#"><i class="fas fa-trash-alt"></i></a> {{-- 投稿削除アイコン --}}
+            </div>
 
-                <div class="card-body">
-                    @if (session('status'))
-                        <div class="alert alert-success" role="alert">
-                            {{ session('status') }}
-                        </div>
-                    @endif
+            {{-- <img src="{{ asset('/img/rainbow_bridge.jpg') }}" alt=""> 投稿写真 --}}
+            <img src="/storage/{{$post->image_path}}" alt=""> {{-- 投稿写真 --}}
 
-                    You are logged in!
+            <div class="post_bottom_wrapper">
+                <div class="inner">
+                    <div class="icons">                                
+                        <a href="#"><i class="far fa-heart"></i></a> {{-- いいねアイコン(ハート) --}}
+                        <a href="#" class="comment"><i class="far fa-comment"></i></a> {{-- コメントアイコン --}}
+                    </div>
+            
+                    <div class="post_bottom">
+                        <p><span>〇〇</span> が「いいね！」しました</p>
+
+                        {{-- 投稿者のコメント(content) --}}
+                        <p><span>{{ $post->user->name }}</span> {{ $post->content }}</p>
+
+                        <div class="comments">
+                            {{-- ここに他人からの複数のコメント表示 --}}
+                            <p><span>△△</span> きれい！(例)</p>
+                        </div>    
+                        <p class="date">{{ $post->updated_at }}</p>            
+                    </div>
                 </div>
             </div>
+        
+            {{-- コメント作成 --}}
+            <form method="GET" action="#">                
+                @csrf {{-- Cross-Site Request Forgeriesの対策 --}}
+                <input placeholder="コメント ..." type="text" name="message">
+            </form>
         </div>
-    </div>
-</div>
+    @endforeach
 @endsection

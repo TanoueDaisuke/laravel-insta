@@ -25,9 +25,14 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $post = Post::find(3);
+        // ログインユーザーに紐づく投稿データを作成順に取得
+        $posts = Auth::user()
+            ->posts()
+            ->orderBy('created_at', 'desc')
+            ->get();
+
         return view('home', [
-            'post' => $post
+            'posts' => $posts
         ]);
     }
 }
