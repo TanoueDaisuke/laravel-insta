@@ -16,8 +16,8 @@ package-lock.json
 .DS_Store
 
 # 重いのでコメントアウト
-public/js/app.js
 public/mix-manifest.json
 
-# コンパイル後のcssはいじらないので管理外に
+# コンパイル後のファイルはいじらないので管理外に
 public/css
+public/js
