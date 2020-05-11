@@ -19,7 +19,7 @@
         <nav>
             <ul>
                 <li class="post_btn">
-                    <a href="#">投稿</a>
+                    <a href="{{ route('posts.create') }}">投稿</a>
                 </li>
                 <li class="profile_btn">
                     <a href="#"><i class="fas fa-user-alt"></i></a>
@@ -38,5 +38,7 @@
 <footer>
     <p>Copyright &copy; HaseTano </p>
 </footer>
+
+    @yield('scripts') {{-- jsがある場合用 --}}
 </body>
 </html>

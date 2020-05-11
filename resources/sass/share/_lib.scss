@@ -1,11 +1,11 @@
 @mixin pc {
-  @media screen and (min-width: 981px){
+  @media screen and (min-width: 901px){
     @content
   }
 };
 
 @mixin tab {
-  @media screen and (max-width: 980px){
+  @media screen and (max-width: 900px){
     @content
   }
 };
@@ -24,6 +24,14 @@ html, body {
 main {
   background-color: #FAFAFA;
   padding: 30px 0;
+}
+
+button {
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+  color: white;
+  background-color: #007bff;
 }
 
 .hover {

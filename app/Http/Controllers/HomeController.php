@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Post;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
 {
@@ -23,6 +25,14 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        // ログインユーザーに紐づく投稿データを作成順に取得
+        $posts = Auth::user()
+            ->posts()
+            ->orderBy('created_at', 'desc')
+            ->get();
+
+        return view('home', [
+            'posts' => $posts
+        ]);
     }
 }

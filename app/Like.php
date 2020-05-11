@@ -6,6 +6,12 @@ use Illuminate\Database\Eloquent\Model;
 
 class Like extends Model
 {
-    //
-    protected $table = 'likes';
+    // リレーション定義
+    public function post() {
+        return $this->belongsTo('App\Post');
+    }
+
+    public function user() {
+        return $this->belongsTo('App\User');
+    }
 }
