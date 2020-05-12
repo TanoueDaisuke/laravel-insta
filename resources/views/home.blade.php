@@ -20,11 +20,11 @@
                         <form action="{{ route('posts.destroy', ['post' => $post]) }}" method="POST">
                             @csrf
                             @method('delete')
-                            <button><i class="fas fa-trash-alt"></i></button> {{-- 投稿削除アイコン --}}
+                            <button type="button" id="delete-btn"><i class="fas fa-trash-alt"></i></button> {{-- 投稿削除アイコン --}}
                         </form>
                     </div>
                 @endif
-                
+
             </div>
 
             {{-- <img src="{{ asset('/img/rainbow_bridge.jpg') }}" alt=""> 投稿写真 --}}
@@ -59,4 +59,8 @@
             </form>
         </div>
     @endforeach
+@endsection
+
+@section('scripts')
+    <script src="{{ asset('/js/confirm_delete.js') }}"></script>
 @endsection
