@@ -13,13 +13,18 @@
                     <a href="#" class="hover"><p>{{ $post->user->name }}</p></a> {{-- 投稿ユーザー名 --}}                
                 </div>
 
-                {{-- ログインユーザーの投稿 --}}
+                {{-- ログインユーザーの投稿のみ「編集ボタン」と「削除ボタンを表示」 --}}
                 @if ($auth_user == $post->user)
                     <div class="right">
-                        <a href="{{ route('posts.edit', ['post' => $post])}}" class="first"><i class="fas fa-pen"></i></a> {{-- 投稿編集アイコン --}}
-                        <a href="#"><i class="fas fa-trash-alt"></i></a> {{-- 投稿削除アイコン --}}
+                        <a href="{{ route('posts.edit', ['post' => $post])}}"><i class="fas fa-pen"></i></a> {{-- 投稿編集アイコン --}}
+                        <form action="{{ route('posts.destroy', ['post' => $post]) }}" method="POST">
+                            @csrf
+                            @method('delete')
+                            <button><i class="fas fa-trash-alt"></i></button> {{-- 投稿削除アイコン --}}
+                        </form>
                     </div>
                 @endif
+                
             </div>
 
             {{-- <img src="{{ asset('/img/rainbow_bridge.jpg') }}" alt=""> 投稿写真 --}}

@@ -39,10 +39,21 @@
     p {
       font-size: 12px;
     }
+
+    i {
+      font-size: 14px;
+    }
   }  
-  
-  .right .first {
-    margin-right: 10px;
+
+  form {
+    margin-left: 15px;
+    padding: 0;
+    background-color: transparent;
+    
+    button {
+      background-color: inherit;
+      color: black;
+    }
   }
 }
 
