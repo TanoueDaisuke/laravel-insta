@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Http\Requests\PostRequest;
 use App\Post;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Storage;
 
 class PostsController extends Controller
 {
@@ -40,6 +39,12 @@ class PostsController extends Controller
         $post->content = $request->content;
 
         $post->save();
+
+        return redirect()->route('top');
+    }
+
+    public function destroy(PostRequest $request, Post $post) {
+        $post->delete(); // 削除
 
         return redirect()->route('top');
     }
