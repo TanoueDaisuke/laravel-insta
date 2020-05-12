@@ -19,6 +19,8 @@
 html, body {
   min-height: 100vh; // footerを最下部に
   background-color: #F8F8F8;
+  display: flex;
+  flex-direction: column;
 }
 
 main {

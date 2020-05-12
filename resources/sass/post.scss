@@ -94,14 +94,14 @@
 }
 
 
-footer {
-  position: absolute;
-  bottom: 0;
+// footer {
+//   position: absolute;
+//   bottom: 0;
 
-  &.active  {
-    position: static; // footerの固定を解除
-  }
-}
+//   &.active  {
+//     position: static; // footerの固定を解除
+//   }
+// }
 
 
 // 編集(edit/(post)/id)用
