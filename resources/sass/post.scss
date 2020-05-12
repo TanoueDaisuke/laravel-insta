@@ -103,3 +103,30 @@ footer {
   }
 }
 
+
+// 編集(edit/(post)/id)用
+
+#edit {
+  margin: 20px auto;
+  margin-bottom: 20px;
+
+  width: 60%;
+  @include tab {
+    width: 90%;
+  }
+
+  p {
+    color: red;
+    font-size: 10px;
+
+    strong {
+      text-decoration: underline;
+      font-size: 12px;
+    }
+  }
+
+  img {
+    width: 100%;
+  }
+}
+

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\PostRequest;
 use App\Post;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 
 class PostsController extends Controller
 {
@@ -34,8 +35,12 @@ class PostsController extends Controller
         return view('posts/edit', ['post' => $post]);
     }
 
-    public function update()
+    public function update(PostRequest $request, Post $post)
     {
-        //
+        $post->content = $request->content;
+
+        $post->save();
+
+        return redirect()->route('top');
     }
 }

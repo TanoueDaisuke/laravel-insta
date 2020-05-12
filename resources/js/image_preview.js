@@ -35,13 +35,3 @@ closeBtn.addEventListener('click', toggleActive)
 const img = document.getElementById('image')
 img.addEventListener('change', prevImage)
 
-
-
-
-// 追記: 編集でもこのファイルを使う。その際footerにactiveを与えて、固定を解除する
-window.addEventListener('load', () => {
-  const edit = document.getElementById('edit')
-  if (edit) {
-    document.getElementsByTagName('footer')[0].classList.add('active');
-  } 
-})

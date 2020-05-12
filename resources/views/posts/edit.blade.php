@@ -5,29 +5,21 @@
 @endsection
 
 @section('content')
-  <div class="post_wrapper" id="edit">
+  <div class="post_wrapper">
     <h2><img src="https://fontmeme.com/permalink/200510/1738bc06b232d8955d642cb7ede9e4e0.png" alt="post page"></h2>
-    <form action="{{ route('posts.store') }}" method="post" enctype="multipart/form-data" >    
-      @csrf    
+    <form action="{{ route('posts.update', ['post' => $post]) }}" method="post" enctype="multipart/form-data" >    
+      @csrf          
+      @method('PUT') {{-- put通信を実装 --}}
       
-      <label for="image" id="toggle-label">
-        ＋写真を選択
-        <input id="image" name="image" type="file" required> {{-- TODO: 画像の保存方法をどうするか --}}
-      </label>
-
-      <div id="relative" class="active">
-        <span id="close-btn"><i class="fas fa-times-circle"></i></span>
-        <img id="preview" src="/storage/{{$post->image_path}}"> {{-- プレビュー画像を表示 --}}
+      <div id="edit">
+        <p>※画像を変更したいときは<strong>投稿を削除</strong>してください</p>
+        <img src="/storage/{{$post->image_path}}"> {{-- プレビュー画像を表示 --}}
       </div>
 
       <textarea name="content" placeholder="キャプションを書く" autofocus required value>{{old('content', $post->content)}}</textarea>
       {{-- TODO: ハッシュタグもできたらやりたい --}}
 
-      <button>投稿する</button>
+      <button>更新する</button>
     </form>
   </div>
-@endsection
-
-@section('scripts')
-  <script src="{{ asset('/js/image_preview.js') }}"></script>
 @endsection
