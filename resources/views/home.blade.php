@@ -12,7 +12,14 @@
                     <a href="#"><img src="{{ asset('/img/nadeshiko.png') }}" alt=""> {{-- 投稿ユーザーのアイコン --}}</a>
                     <a href="#" class="hover"><p>{{ $post->user->name }}</p></a> {{-- 投稿ユーザー名 --}}                
                 </div>
-                <a href="#"><i class="fas fa-trash-alt"></i></a> {{-- 投稿削除アイコン --}}
+
+                {{-- ログインユーザーの投稿 --}}
+                @if ($auth_user == $post->user)
+                    <div class="right">
+                        <a href="{{ route('posts.edit', ['post' => $post])}}" class="first"><i class="fas fa-pen"></i></a> {{-- 投稿編集アイコン --}}
+                        <a href="#"><i class="fas fa-trash-alt"></i></a> {{-- 投稿削除アイコン --}}
+                    </div>
+                @endif
             </div>
 
             {{-- <img src="{{ asset('/img/rainbow_bridge.jpg') }}" alt=""> 投稿写真 --}}

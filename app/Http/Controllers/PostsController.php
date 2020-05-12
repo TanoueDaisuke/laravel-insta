@@ -28,4 +28,14 @@ class PostsController extends Controller
 
         return redirect()->route('top');
     }
+
+    public function edit(Post $post) 
+    {
+        return view('posts/edit', ['post' => $post]);
+    }
+
+    public function update()
+    {
+        //
+    }
 }
