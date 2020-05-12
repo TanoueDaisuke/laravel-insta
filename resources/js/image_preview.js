@@ -38,14 +38,10 @@ img.addEventListener('change', prevImage)
 
 
 
-// 追記: 編集でもこのファイルを使う。その際読み込み時でもプレビュー画像が表示されるようにする。
-// window.addEventListener('load', () => {
-//   const isEdit = document.getElementById('edit')
-//   if (edit) {
-
-//   } else {
-//     return null // editがnull => create.blade.phpの場合は何も実行しない
-//   }
-
-
-// })
+// 追記: 編集でもこのファイルを使う。その際footerにactiveを与えて、固定を解除する
+window.addEventListener('load', () => {
+  const edit = document.getElementById('edit')
+  if (edit) {
+    document.getElementsByTagName('footer')[0].classList.add('active');
+  } 
+})

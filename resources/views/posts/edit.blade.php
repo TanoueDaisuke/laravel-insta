@@ -10,14 +10,14 @@
     <form action="{{ route('posts.store') }}" method="post" enctype="multipart/form-data" >    
       @csrf    
       
-      <label for="image" id="toggle-label" class="active">
+      <label for="image" id="toggle-label">
         ＋写真を選択
         <input id="image" name="image" type="file" required> {{-- TODO: 画像の保存方法をどうするか --}}
       </label>
 
-      <div id="relative">
+      <div id="relative" class="active">
         <span id="close-btn"><i class="fas fa-times-circle"></i></span>
-        <img id="preview"> {{-- プレビュー画像を表示 --}}
+        <img id="preview" src="/storage/{{$post->image_path}}"> {{-- プレビュー画像を表示 --}}
       </div>
 
       <textarea name="content" placeholder="キャプションを書く" autofocus required value>{{old('content', $post->content)}}</textarea>
