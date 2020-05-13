@@ -11,8 +11,13 @@
       @csrf          
       @method('PUT') {{-- put通信を実装 --}}
       
-      <div id="edit">
-        <p>※画像を変更したいときは<strong>投稿を削除</strong>してください</p>
+      <label for="image" id="toggle-label">
+        ＋写真を選択
+        <input id="image" name="image" type="file"> {{-- TODO: 画像の保存方法をどうするか --}}
+      </label>
+
+      <div id="relative" class="active">
+        <span id="close-btn"><i class="fas fa-times-circle"></i></span>
         <img src="/storage/{{$post->image_path}}"> {{-- プレビュー画像を表示 --}}
       </div>
 
@@ -22,4 +27,8 @@
       <button>更新する</button>
     </form>
   </div>
+@endsection
+
+@section('scripts')
+  <script src="{{ asset('/js/image_preview.js') }}"></script>
 @endsection

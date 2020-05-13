@@ -11,7 +11,6 @@ const toggleActive = () => {
   // それぞれ切り替え
   divRelative.classList.toggle('active')
   toggleLabel.classList.toggle('active')
-  footer.classList.toggle('active')
 }
 
 // 写真選択からプレビューまで
@@ -34,4 +33,3 @@ closeBtn.addEventListener('click', toggleActive)
 // 写真を選択した時の処理
 const img = document.getElementById('image')
 img.addEventListener('change', prevImage)
-
