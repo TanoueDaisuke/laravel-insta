@@ -93,13 +93,3 @@
   display: block !important; // 表示
 }
 
-
-footer {
-  position: absolute;
-  bottom: 0;
-
-  &.active  {
-    position: static; // footerの固定を解除
-  }
-}
-

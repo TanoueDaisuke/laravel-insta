@@ -1,5 +1,5 @@
 // 「写真を選択」と「画像,×ボタン」の表示切り替え
-const togglePreview = () => {
+const toggleActive = () => {
   // 画像と×ボタンをラップしてるdiv
   const divRelative = document.getElementById('relative')
   // 写真を選択ボタン
@@ -11,12 +11,10 @@ const togglePreview = () => {
   // それぞれ切り替え
   divRelative.classList.toggle('active')
   toggleLabel.classList.toggle('active')
-  footer.classList.toggle('active')
 }
 
 // 写真選択からプレビューまで
-const image = document.getElementById('image')
-image.addEventListener('change', (e) => {
+const prevImage = (e) => {
   const reader = new FileReader()
   reader.onload = (e) => {
     const preview = document.getElementById('preview')
@@ -25,14 +23,13 @@ image.addEventListener('change', (e) => {
   reader.readAsDataURL(e.target.files[0])
 
   // 切り替え
-  togglePreview()
-})
+  toggleActive()
+}
 
 // 写真上の×ボタンを押した時の処理
 const closeBtn = document.getElementById('close-btn')
-closeBtn.addEventListener('click', togglePreview)
+closeBtn.addEventListener('click', toggleActive)
 
-
-
-
-// これReactで書いたらクッソ楽なんだけどなあ...
+// 写真を選択した時の処理
+const img = document.getElementById('image')
+img.addEventListener('change', prevImage)

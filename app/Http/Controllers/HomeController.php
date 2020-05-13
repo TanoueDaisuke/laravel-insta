@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Post;
+use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
 {
@@ -25,9 +26,11 @@ class HomeController extends Controller
     {
         // ログインユーザーに紐づく投稿データを作成順に取得
         $posts = Post::orderBy('created_at', 'desc')->get();
+        $auth_user = Auth::user();
 
         return view('home', [
-            'posts' => $posts
+            'posts' => $posts,
+            'auth_user' => $auth_user
         ]);
     }
 }

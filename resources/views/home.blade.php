@@ -12,7 +12,19 @@
                     <a href="#"><img src="{{ asset('/img/nadeshiko.png') }}" alt=""> {{-- 投稿ユーザーのアイコン --}}</a>
                     <a href="#" class="hover"><p>{{ $post->user->name }}</p></a> {{-- 投稿ユーザー名 --}}                
                 </div>
-                <a href="#"><i class="fas fa-trash-alt"></i></a> {{-- 投稿削除アイコン --}}
+
+                {{-- ログインユーザーの投稿のみ「編集ボタン」と「削除ボタンを表示」 --}}
+                @if ($auth_user == $post->user)
+                    <div class="right">
+                        <a href="{{ route('posts.edit', ['post' => $post])}}"><i class="fas fa-pen"></i></a> {{-- 投稿編集アイコン --}}
+                        <form action="{{ route('posts.destroy', ['post' => $post]) }}" method="POST">
+                            @csrf
+                            @method('delete')
+                            <button name="delete" type="button"><i class="fas fa-trash-alt"></i></button> {{-- 投稿削除アイコン --}}
+                        </form>
+                    </div>
+                @endif
+
             </div>
 
             {{-- <img src="{{ asset('/img/rainbow_bridge.jpg') }}" alt=""> 投稿写真 --}}
@@ -47,4 +59,8 @@
             </form>
         </div>
     @endforeach
+@endsection
+
+@section('scripts')
+    <script src="{{ asset('/js/confirm_delete.js') }}"></script>
 @endsection
