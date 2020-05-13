@@ -20,7 +20,7 @@
                         <form action="{{ route('posts.destroy', ['post' => $post]) }}" method="POST">
                             @csrf
                             @method('delete')
-                            <button type="button" id="delete-btn"><i class="fas fa-trash-alt"></i></button> {{-- 投稿削除アイコン --}}
+                            <button name="delete" type="button"><i class="fas fa-trash-alt"></i></button> {{-- 投稿削除アイコン --}}
                         </form>
                     </div>
                 @endif

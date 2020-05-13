@@ -1,11 +1,13 @@
-const deleteBtn = document.getElementById('delete-btn')
-
-deleteBtn.addEventListener('click', () => {
-  const result = window.confirm('本当に削除しますか？')
-
+const confirmDelete = () => {
+  const result = window.confirm('本当に投稿を削除しますか？')
+  
   if (result) {
     deleteBtn.parentNode.submit() // 送信
-  } else {
-    alert('キャンセルされました') // キャンセル
   }
-})
+}
+const deleteButtons = document.getElementsByName('delete')
+
+// name属性が"delete"(削除アイコンボタン)のタグ全てにイベント設定
+deleteButtons.forEach(deleteBtn => {
+  deleteBtn.addEventListener('click', confirmDelete)
+});
