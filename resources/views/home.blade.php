@@ -33,18 +33,19 @@
             <div class="post_bottom_wrapper">
                 <div class="inner">
                     <div class="icons">
-                        <form action="{{ route('likes.store', ['post' => $post]) }}" method="post">
+                        <form action="{{ route('likes.toggle', ['post' => $post]) }}" method="post">
                             @csrf
+                            {{-- 自分がいいねしていたらredクラスを i タグに与えるロジック --}}
+                            {{ $red_class = '' }}
+                            @foreach($post->likes as $like)                                    
+                                @if($like->user == $auth_user)
+                                    <?php $red_class = 'checked'; ?> {{-- redクラスは赤色にするクラス --}}
+                                    @break
+                                @endif
+                            @endforeach
+                            
+                            <input type="hidden" name="{{ $red_class }}">
                             <button>
-                                {{-- 自分がいいねしていたらredクラスを i タグに与えるロジック --}}
-                                {{ $red_class = '' }}
-                                @foreach($post->likes as $like)                                    
-                                    @if($like->user == $auth_user)
-                                        <?php $red_class = 'red'; ?> {{-- redクラスは赤色にするクラス --}}
-                                        @break
-                                    @endif
-                                @endforeach
-
                                 <i class="far fa-heart {{$red_class}}"></i>
                             </button>  
                         </form>

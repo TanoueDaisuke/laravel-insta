@@ -21,7 +21,7 @@ Route::group(['middleware' => 'auth'], function () {
         'only' => ['create', 'store', 'edit', 'update', 'destroy']
     ]);
 
-    Route::post('/posts/{post}/likes', 'LikesController@store')->name('likes.store');
+    Route::post('/posts/{post}/likes', 'LikesController@toggle')->name('likes.toggle');
 });
 
 Auth::routes();
