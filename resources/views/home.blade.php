@@ -36,7 +36,16 @@
                         <form action="{{ route('likes.store', ['post' => $post]) }}" method="post">
                             @csrf
                             <button>
-                                <i class="far fa-heart"></i> {{-- ハートアイコン(赤) --}}
+                                {{-- 自分がいいねしていたらredクラスを i タグに与えるロジック --}}
+                                {{ $red_class = '' }}
+                                @foreach($post->likes as $like)                                    
+                                    @if($like->user == $auth_user)
+                                        <?php $red_class = 'red'; ?> {{-- redクラスは赤色にするクラス --}}
+                                        @break
+                                    @endif
+                                @endforeach
+
+                                <i class="far fa-heart {{$red_class}}"></i>
                             </button>  
                         </form>
 
@@ -44,7 +53,19 @@
                     </div>
             
                     <div class="post_bottom">
-                        <p><span>〇〇</span> が「いいね！」しました</p>
+                        <?php  
+                            $like_count = $post->likes->count(); // 〇〇と「他△人がいいねしました」の△
+                            
+                            if ($like_count >= 1) {
+                                $one_liked_user = $post->likes->first()->user->name; 
+
+                                if ($like_count == 1) {
+                                    echo "<p><span>{$one_liked_user}</span> が「いいね！」しました</p>";
+                                } else if ($like_count > 1 ) {
+                                    echo "<p><span>{$one_liked_user}</span>, 他" . ($like_count-1) . "人が「いいね！」しました</p>";
+                                }
+                            } 
+                        ?>
 
                         {{-- 投稿者のコメント(content) --}}
                         <p><span>{{ $post->user->name }}</span> {{ $post->content }}</p>
