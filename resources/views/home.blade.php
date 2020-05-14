@@ -32,8 +32,14 @@
 
             <div class="post_bottom_wrapper">
                 <div class="inner">
-                    <div class="icons">                                
-                        <a href="#"><i class="far fa-heart"></i></a> {{-- いいねアイコン(ハート) --}}
+                    <div class="icons">
+                        <form action="{{ route('likes.store', ['post' => $post]) }}" method="post">
+                            @csrf
+                            <button>
+                                <i class="far fa-heart"></i> {{-- ハートアイコン(赤) --}}
+                            </button>  
+                        </form>
+
                         <a href="#" class="comment"><i class="far fa-comment"></i></a> {{-- コメントアイコン --}}
                     </div>
             
