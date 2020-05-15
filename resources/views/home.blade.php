@@ -35,18 +35,18 @@
                     <div class="icons">
                         <form action="{{ route('likes.toggle', ['post' => $post]) }}" method="post">
                             @csrf
-                            {{-- 自分がいいねしていたらredクラスを i タグに与えるロジック --}}
-                            {{ $red_class = '' }}
+                            {{-- 自分がいいねしていたらcheckedクラスを i タグに与えるロジック --}}
+                            {{ $checked = '' }}
                             @foreach($post->likes as $like)                                    
                                 @if($like->user == $auth_user)
-                                    <?php $red_class = 'checked'; ?> {{-- redクラスは赤色にするクラス --}}
+                                    <?php $checked = 'checked'; ?> {{-- checkedクラスは赤色にするクラス --}}
                                     @break
                                 @endif
                             @endforeach
                             
-                            <input type="hidden" name="{{ $red_class }}">
+                            <input type="hidden" name="{{ $checked }}" value="{{ $checked }}">
                             <button>
-                                <i class="far fa-heart {{$red_class}}"></i>
+                                <i class="far fa-heart {{$checked}}"></i>
                             </button>  
                         </form>
 

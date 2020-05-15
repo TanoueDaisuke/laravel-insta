@@ -14,6 +14,9 @@ class LikesController extends Controller
     {
         $is_checked = $request->checked;
         Log::info(gettype($is_checked));
+        Log::info(gettype($post));
+        Log::debug($request);
+
 
         // チェックの有無で削除か作成か判断
         if ($is_checked == '') {
