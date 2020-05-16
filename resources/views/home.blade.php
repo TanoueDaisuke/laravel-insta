@@ -32,13 +32,47 @@
 
             <div class="post_bottom_wrapper">
                 <div class="inner">
-                    <div class="icons">                                
-                        <a href="#"><i class="far fa-heart"></i></a> {{-- いいねアイコン(ハート) --}}
+                    <div class="icons">
+                        <form action="{{ route('likes.toggle', ['post_id' => $post->id]) }}" method="post" data-post-id="{{ $post->id}}">
+                            @csrf
+                            {{-- 自分がいいねしていたらcheckedクラスを i タグに与えるロジック --}}
+                            {{ $checked = '' }}
+                            @foreach($post->likes as $like)                                    
+                                @if($like->user == $auth_user)
+                                    <?php $checked = 'checked'; ?> {{-- checkedクラスは赤色にするクラス --}}
+                                    @break
+                                @endif
+                            @endforeach
+                            
+                            <input type="hidden" name="{{ $checked }}" value="{{ $checked }}">
+                            <button class="like-btn" type="button">
+                                @if($checked)
+                                    <i class="fas fa-heart post{{$post->id}} {{$checked}}"></i>
+                                @else                                
+                                    <i class="far fa-heart post{{$post->id}}"></i>
+                                @endif
+                            </button>  
+                        </form>
+
                         <a href="#" class="comment"><i class="far fa-comment"></i></a> {{-- コメントアイコン --}}
                     </div>
             
                     <div class="post_bottom">
-                        <p><span>〇〇</span> が「いいね！」しました</p>
+                        <?php  
+                            $like_count = $post->likes->count(); // 〇〇と「他△人がいいねしました」の△
+                            
+                            if ($like_count >= 1) {
+                                $one_liked_user = $post->likes->first()->user->name; 
+
+                                if ($like_count == 1) {
+                                    echo "<p id=post{$post->id} data-like-count={$like_count} data-auth-user={$auth_user->name}><span>{$one_liked_user}</span> が「いいね！」しました</p>";
+                                } else if ($like_count > 1 ) {
+                                    echo "<p id=post{$post->id} data-like-count={$like_count} data-auth-user={$auth_user->name}><span>{$one_liked_user}</span>, 他" . ($like_count-1) . "人が「いいね！」しました</p>";
+                                }
+                            } else {
+                                echo "<p id=post{$post->id} data-like-count={$like_count} data-liked-user={$auth_user->name}></p>" ;// jsで使うので空のpタグを用意
+                            }
+                        ?>
 
                         {{-- 投稿者のコメント(content) --}}
                         <p><span>{{ $post->user->name }}</span> {{ $post->content }}</p>
@@ -63,4 +97,5 @@
 
 @section('scripts')
     <script src="{{ asset('/js/confirm_delete.js') }}"></script>
+    <script src="{{ asset('/js/handle_like.js') }}"></script>
 @endsection

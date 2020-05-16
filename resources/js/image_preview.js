@@ -5,9 +5,6 @@ const toggleActive = () => {
   // 写真を選択ボタン
   const toggleLabel = document.getElementById('toggle-label')
 
-  // footerのポジションも切り替えるのに必要
-  const footer = document.getElementsByTagName('footer')[0]
-
   // それぞれ切り替え
   divRelative.classList.toggle('active')
   toggleLabel.classList.toggle('active')
