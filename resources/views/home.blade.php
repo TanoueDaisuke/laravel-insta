@@ -47,9 +47,9 @@
                             <input type="hidden" name="{{ $checked }}" value="{{ $checked }}">
                             <button class="like-btn" type="button">
                                 @if($checked)
-                                    <i class="fas fa-heart {{$checked}}"></i>
+                                    <i class="fas fa-heart post{{$post->id}} {{$checked}}"></i>
                                 @else                                
-                                    <i class="far fa-heart"></i>
+                                    <i class="far fa-heart post{{$post->id}}"></i>
                                 @endif
                             </button>  
                         </form>
@@ -65,11 +65,13 @@
                                 $one_liked_user = $post->likes->first()->user->name; 
 
                                 if ($like_count == 1) {
-                                    echo "<p><span>{$one_liked_user}</span> が「いいね！」しました</p>";
+                                    echo "<p id=post{$post->id} data-like-count={$like_count} data-liked-user={$auth_user->name}><span>{$one_liked_user}</span> が「いいね！」しました</p>";
                                 } else if ($like_count > 1 ) {
-                                    echo "<p><span>{$one_liked_user}</span>, 他" . ($like_count-1) . "人が「いいね！」しました</p>";
+                                    echo "<p id=post{$post->id} data-like-count={$like_count}><span>{$one_liked_user}</span>, 他" . ($like_count-1) . "人が「いいね！」しました</p>";
                                 }
-                            } 
+                            } else {
+                                echo "<p id=post{$post->id} data-like-count={$like_count} data-liked-user={$auth_user->name}></p>" ;// jsで使うので空のpタグを用意
+                            }
                         ?>
 
                         {{-- 投稿者のコメント(content) --}}
@@ -95,5 +97,5 @@
 
 @section('scripts')
     <script src="{{ asset('/js/confirm_delete.js') }}"></script>
-    <script src="{{ asset('/js/post_ajax.js') }}"></script>
+    <script src="{{ asset('/js/handle_like.js') }}"></script>
 @endsection
