@@ -12,10 +12,11 @@ class LikesController extends Controller
 {
     public function toggle(Request $request, Int $post_id)
     {
+        Log::debug($request);
         $is_checked = $request->checked;
 
         // チェックの有無で削除か作成か判断
-        if ($is_checked == '') {
+        if ($is_checked == 'null') {
             $like = new Like();
     
             $like->post_id = $post_id;
