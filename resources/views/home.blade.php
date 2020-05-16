@@ -65,9 +65,9 @@
                                 $one_liked_user = $post->likes->first()->user->name; 
 
                                 if ($like_count == 1) {
-                                    echo "<p id=post{$post->id} data-like-count={$like_count} data-liked-user={$auth_user->name}><span>{$one_liked_user}</span> が「いいね！」しました</p>";
+                                    echo "<p id=post{$post->id} data-like-count={$like_count} data-auth-user={$auth_user->name}><span>{$one_liked_user}</span> が「いいね！」しました</p>";
                                 } else if ($like_count > 1 ) {
-                                    echo "<p id=post{$post->id} data-like-count={$like_count}><span>{$one_liked_user}</span>, 他" . ($like_count-1) . "人が「いいね！」しました</p>";
+                                    echo "<p id=post{$post->id} data-like-count={$like_count} data-auth-user={$auth_user->name}><span>{$one_liked_user}</span>, 他" . ($like_count-1) . "人が「いいね！」しました</p>";
                                 }
                             } else {
                                 echo "<p id=post{$post->id} data-like-count={$like_count} data-liked-user={$auth_user->name}></p>" ;// jsで使うので空のpタグを用意

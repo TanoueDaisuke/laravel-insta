@@ -57,19 +57,19 @@ const replaceLikedContent = (isChecked, likedContent, likeCount) => {
         
       // ２人以上がいいねしているとき(自分を含む)
       default:
-        newLikedText = `<span>${likeCount - 2}人</span>が「いいね！」しました` // 他のユーザーを持ってくるロジックが面倒なのでこれで許してクレメンス・・・
+        newLikedText = `<span>${likeCount - 1}人</span>が「いいね！」しました` // 他のユーザーを持ってくるロジックが面倒なのでこれで許してクレメンス・・・
         break;
       }
   } else {
     switch (likeCount) {
       // 誰もいいねしてないとき
       case 0 :
-        newLikedText = `<span>${likedContent.dataset.likedUser}</span>が「いいね」しました`
+        newLikedText = `<span>${likedContent.dataset.authUser}</span>が「いいね」しました`
         break;
         
       // １人以上がいいねしているとき
       default:
-        newLikedText = `<span>${likedContent.dataset.likedUser}</span>, 他${likeCount}が「いいね」しました`
+        newLikedText = `<span>${likedContent.dataset.authUser}</span>, 他${likeCount}が「いいね」しました`
       break;
     }
   }
