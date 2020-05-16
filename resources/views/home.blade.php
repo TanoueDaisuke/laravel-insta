@@ -46,7 +46,11 @@
                             
                             <input type="hidden" name="{{ $checked }}" value="{{ $checked }}">
                             <button>
-                                <i class="far fa-heart {{$checked}}"></i>
+                                @if($checked)
+                                    <i class="fas fa-heart {{$checked}}"></i>
+                                @else                                
+                                    <i class="far fa-heart"></i>
+                                @endif
                             </button>  
                         </form>
 
