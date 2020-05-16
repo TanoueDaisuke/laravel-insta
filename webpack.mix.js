@@ -14,6 +14,7 @@ const mix = require('laravel-mix');
 mix.js('resources/js/app.js', 'public/js')
     .js('resources/js/image_preview.js', 'public/js')
     .js('resources/js/confirm_delete.js', 'public/js')
+    .js('resources/js/post_ajax.js', 'public/js')
     .sass('resources/sass/top.scss', 'public/css')
     .sass('resources/sass/auth/auth.scss', 'public/css/auth')
     .sass('resources/sass/post.scss', 'public/css')

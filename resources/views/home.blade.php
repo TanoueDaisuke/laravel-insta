@@ -33,7 +33,7 @@
             <div class="post_bottom_wrapper">
                 <div class="inner">
                     <div class="icons">
-                        <form action="{{ route('likes.toggle', ['post' => $post]) }}" method="post">
+                        <form action="{{ route('likes.toggle', ['post_id' => $post->id]) }}" method="post" data-post-id="{{ $post->id}}">
                             @csrf
                             {{-- 自分がいいねしていたらcheckedクラスを i タグに与えるロジック --}}
                             {{ $checked = '' }}
@@ -45,7 +45,7 @@
                             @endforeach
                             
                             <input type="hidden" name="{{ $checked }}" value="{{ $checked }}">
-                            <button>
+                            <button class="like-btn" type="button">
                                 @if($checked)
                                     <i class="fas fa-heart {{$checked}}"></i>
                                 @else                                
@@ -95,4 +95,5 @@
 
 @section('scripts')
     <script src="{{ asset('/js/confirm_delete.js') }}"></script>
+    <script src="{{ asset('/js/post_ajax.js') }}"></script>
 @endsection
