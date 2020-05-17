@@ -130,11 +130,16 @@ form {
     padding: 10px;
     border: 1px solid rgba(0, 0, 0, 0.125);
     border-radius: 5px;
-  }
 
+  }
+  
   button {
     width: 14%;
-    // padding-right: 10px;
+
+    &[disabled] {
+      opacity: 0.5;
+      pointer-events: none;
+    }
   }
 }
 

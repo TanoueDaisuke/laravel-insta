@@ -79,7 +79,9 @@
 
                         <div class="comments">
                             {{-- ここに他人からの複数のコメント表示 --}}
-                            <p><span>△△</span> きれい！(例)</p>
+                            @foreach($post->comments as $comment)
+                                <p><span>{{$comment->user->name}}</span> {{$comment->message}}</p>
+                            @endforeach
                         </div>    
                         <p class="date">{{ $post->updated_at }}</p>            
                     </div>
@@ -89,8 +91,8 @@
             {{-- コメント作成 --}}
             <form method="POST" action="{{ route('comments.store', ['post' => $post]) }}">                
                 @csrf {{-- Cross-Site Request Forgeriesの対策 --}}
-                <input placeholder="コメント ..." type="text" name="message">
-                <button>送信</button>
+                <input placeholder="コメント ..." type="text" name="message" required>
+                <button disabled>送信</button>
             </form>
         </div>
     @endforeach
@@ -99,4 +101,5 @@
 @section('scripts')
     <script src="{{ asset('/js/confirm_delete.js') }}"></script>
     <script src="{{ asset('/js/handle_like.js') }}"></script>
+    <script src="{{ asset('/js/handle_comment.js') }}"></script>
 @endsection
