@@ -87,9 +87,10 @@
             </div>
         
             {{-- コメント作成 --}}
-            <form method="GET" action="#">                
+            <form method="POST" action="{{ route('comments.store', ['post' => $post]) }}">                
                 @csrf {{-- Cross-Site Request Forgeriesの対策 --}}
                 <input placeholder="コメント ..." type="text" name="message">
+                <button>送信</button>
             </form>
         </div>
     @endforeach
