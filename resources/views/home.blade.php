@@ -80,7 +80,16 @@
                         <div class="comments">
                             {{-- ここに他人からの複数のコメント表示 --}}
                             @foreach($post->comments as $comment)
-                                <p><span>{{$comment->user->name}}</span> {{$comment->message}}</p>
+                                <p><span>{{$comment->user->name}}</span> {{$comment->message}}</p> {{--１つのコメント --}}
+
+                                {{-- コメント投稿者がログインユーザーなら削除できるようにする --}}
+                                @if($comment->user == $auth_user)                                
+                                    <form action="{{ route('comments.destroy', ['post' => $post, 'comment' => $comment]) }}" method="POST">
+                                        @csrf
+                                        @method('delete')
+                                        <button name="delete" type="button"><i class="fas fa-trash-alt"></i></button> {{-- 投稿削除アイコン --}}
+                                    </form>
+                                @endif
                             @endforeach
                         </div>    
                         <p class="date">{{ $post->updated_at }}</p>            

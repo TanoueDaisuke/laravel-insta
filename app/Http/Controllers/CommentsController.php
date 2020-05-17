@@ -19,4 +19,10 @@ class CommentsController extends Controller
 
         return redirect()->route('top');
     }
+    
+    public function destroy(Request $request, Post $post, Comment $comment)
+    {
+        $comment->delete();
+        return redirect()->route('top');
+    }
 }
