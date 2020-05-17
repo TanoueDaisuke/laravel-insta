@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Post;
 use Illuminate\Support\Facades\Auth;
+use Mockery\Matcher\Any;
 
 class HomeController extends Controller
 {
@@ -22,7 +23,7 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    public function index()
+    public function index(Any $id)
     {
         // ログインユーザーに紐づく投稿データを作成順に取得
         $posts = Post::orderBy('created_at', 'desc')->get();
@@ -30,7 +31,8 @@ class HomeController extends Controller
 
         return view('home', [
             'posts' => $posts,
-            'auth_user' => $auth_user
+            'auth_user' => $auth_user,
+            'id' => $id
         ]);
     }
 }

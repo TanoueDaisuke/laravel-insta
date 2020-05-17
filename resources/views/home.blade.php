@@ -80,16 +80,18 @@
                         <div class="comments">
                             {{-- ここに他人からの複数のコメント表示 --}}
                             @foreach($post->comments as $comment)
-                                <p><span>{{$comment->user->name}}</span> {{$comment->message}}</p> {{--１つのコメント --}}
-
-                                {{-- コメント投稿者がログインユーザーなら削除できるようにする --}}
-                                @if($comment->user == $auth_user)                                
-                                    <form action="{{ route('comments.destroy', ['post' => $post, 'comment' => $comment]) }}" method="POST">
-                                        @csrf
-                                        @method('delete')
-                                        <button name="delete" type="button"><i class="fas fa-trash-alt"></i></button> {{-- 投稿削除アイコン --}}
-                                    </form>
-                                @endif
+                                <div class="line_comment" id="comment{{$comment->id}}">
+                                    <p><span>{{$comment->user->name}}</span> {{$comment->message}}</p> {{--１つのコメント --}}
+    
+                                    {{-- コメント投稿者がログインユーザーなら削除できるようにする --}}
+                                    @if($comment->user == $auth_user)                                
+                                        <form action="{{ route('comments.destroy', ['post' => $post, 'comment' => $comment]) }}" method="POST">
+                                            @csrf
+                                            @method('delete')
+                                            <button name="delete" type="button"><i class="fas fa-times js-comment-delete" data-comment-id="{{$comment->id}}"></i></button> {{-- 投稿削除アイコン --}}
+                                        </form>
+                                    @endif
+                                </div>
                             @endforeach
                         </div>    
                         <p class="date">{{ $post->updated_at }}</p>            
@@ -98,7 +100,7 @@
             </div>
         
             {{-- コメント作成 --}}
-            <form method="POST" action="{{ route('comments.store', ['post' => $post]) }}">                
+            <form class="comment_post" method="POST" action="{{ route('comments.store', ['post' => $post]) }}">                
                 @csrf {{-- Cross-Site Request Forgeriesの対策 --}}
                 <input placeholder="コメント ..." type="text" name="message" required>
                 <button disabled>送信</button>

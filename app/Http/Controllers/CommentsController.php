@@ -22,7 +22,7 @@ class CommentsController extends Controller
     
     public function destroy(Request $request, Post $post, Comment $comment)
     {
-        $comment->delete();
+        $comment->delete();        
         return redirect()->route('top');
     }
 }
