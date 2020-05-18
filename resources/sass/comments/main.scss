@@ -2,7 +2,6 @@
 
 .post_wrapper {
   width: 50%;
-
   // タブレット
   @include tab {
     width: 80%;
@@ -15,16 +14,27 @@
 
   margin: 0 auto 20px;
   border: 1px solid rgba(0,0,0,.125);
-  display: flex;
 
+  display: flex;
+  @include sp {
+    display: block;
+  }
   img {
     width: 50%; // メイン画像
+    @include sp {
+      width: 100%;
+    }
+
     object-fit: contain;
   }
 }
 
 .post_right {
   width: 50%;
+  @include sp {
+    width: 100%;
+  }
+  
   max-height: 400px; // コメントの量が多い場合は全体を400pxに制限
   display: flex;
   justify-content: space-between;
