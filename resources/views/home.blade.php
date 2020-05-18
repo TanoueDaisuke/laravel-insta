@@ -54,7 +54,7 @@
                             </button>  
                         </form>
 
-                        <a href="#" class="comment"><i class="far fa-comment"></i></a> {{-- コメントアイコン --}}
+                        <a href="{{ route('comments.index', ['post' => $post]) }}" class="comment"><i class="far fa-comment"></i></a> {{-- コメントアイコン --}}
                     </div>
             
                     <div class="post_bottom">

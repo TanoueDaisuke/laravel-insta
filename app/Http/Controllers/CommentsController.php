@@ -9,6 +9,16 @@ use Illuminate\Support\Facades\Auth;
 
 class CommentsController extends Controller
 {
+    public function index(Request $request, Post $post)
+    {
+        $auth_user = Auth::user();
+
+        return view('comments.index', [
+            'post' => $post,
+            'auth_user' => $auth_user
+        ]);
+    }
+
     public function store(Request $request, Post $post)
     {
         $comment = new Comment();
