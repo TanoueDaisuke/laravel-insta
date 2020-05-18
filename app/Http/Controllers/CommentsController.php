@@ -27,7 +27,15 @@ class CommentsController extends Controller
 
         Auth::user()->comments()->save($comment);
 
-        return redirect()->route('top');
+        // もしもコメント一覧ページから送られてきたらそちらにredirect
+        if ($request->from_page == 'comments.index') {
+            return redirect()->route('comments.index', 
+                ['post' => $post]
+            );
+        } else {
+            return redirect()->route('top');
+        }
+
     }
     
     public function destroy(Request $request, Post $post, Comment $comment)

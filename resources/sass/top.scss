@@ -101,6 +101,11 @@
 .post_bottom {
   font-size: 10px;
 
+  .comments {
+    min-height: 150px;
+    overflow: auto;
+  }
+
   span {
     font-weight: bold;
     margin-right: 3px;
