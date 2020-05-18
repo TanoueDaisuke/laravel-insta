@@ -1,0 +1,168 @@
+@import '../share/share'; // shareフォルダ内のまとめ
+
+.post_wrapper {
+  width: 40%;
+
+  // タブレット
+  @include tab {
+    width: 80%;
+  }
+
+  // スマホ
+  @include sp {
+    width: 90%;
+  }
+
+  margin: 0 auto 20px;
+  border: 1px solid rgba(0,0,0,.125);
+  display: flex;
+
+  img {
+    width: 100%; // メイン画像
+  }
+}
+
+.post_right {
+  height: 500px; // align-contentを使うため
+  display: flex;
+  justify-content: space-between;
+  align-content: space-between;
+  flex-direction: column;
+
+  padding: 15px;
+  background-color: #fff;
+}  
+
+.profile {
+  display: flex;
+  align-items: center;
+
+  img {
+    width: 30px;
+    border-radius: 50%;
+    margin-right: 10px;
+  }
+
+  p {
+    font-size: 12px;
+  }
+
+  i {
+    font-size: 14px;
+  }
+}
+
+// form {
+//   margin-left: 15px;
+//   padding: 0;
+//   background-color: transparent;
+  
+//   button {
+//     background-color: inherit;
+//     color: black;
+//     outline: none;
+//   }
+// }
+
+.icon_form_wrap {
+  overflow: scroll;
+}
+
+.icons {
+  font-size: 23px;
+  padding-bottom: 5px;
+  display: flex;
+  justify-content: left;
+  align-items: center;
+
+  form {
+    background-color: transparent;
+    padding: 0;
+    
+    button {
+      background-color: inherit;
+      color: black;
+      outline: none;
+      font-size: inherit;
+      padding: 0;
+
+      i.checked {
+        color: red;
+      }
+    }
+  }
+
+  .comment {
+    display: block;
+    margin-left: 5px;
+    transform: scaleX(-1); // 左右反転
+  }
+}
+
+.like_display {
+  font-size: 10px;
+
+  span {
+    font-weight: bold;
+    margin-right: 3px;
+  }
+
+  p {
+    margin-bottom: 3px;
+  }
+
+  .date {
+    padding: 10px 0;
+    font-size: 7px;
+    color: #999;
+  }
+}
+
+.comments {
+  font-size: 12px;
+
+  .line_comment {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: background-color 0.3s;
+  
+    &.hover-comment {
+      background-color: rgb(228, 222, 222); // js側でbuttonにカーソルが乗ったらこのクラスを付与
+    }
+  
+    button {
+      background-color: inherit;
+      color: grey;
+      outline: none;
+    }
+  }
+}
+
+
+.comment_post {
+  padding: 10px 5px;
+  background-color: #fff;
+
+  display: flex;
+  justify-content: space-between;
+  
+  input {
+    display: block;
+    width: 85%;
+    padding: 10px;
+    border: 1px solid rgba(0, 0, 0, 0.125);
+    border-radius: 5px;
+  }
+  
+  button {
+    width: 14%;
+
+    &[disabled] {
+      opacity: 0.5;
+      pointer-events: none;
+    }
+  }
+}
+
+
