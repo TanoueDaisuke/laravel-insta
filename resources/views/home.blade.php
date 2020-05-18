@@ -70,7 +70,7 @@
                                     echo "<p id=post{$post->id} data-like-count={$like_count} data-auth-user={$auth_user->name}><span>{$one_liked_user}</span>, 他" . ($like_count-1) . "人が「いいね！」しました</p>";
                                 }
                             } else {
-                                echo "<p id=post{$post->id} data-like-count={$like_count} data-liked-user={$auth_user->name}></p>" ;// jsで使うので空のpタグを用意
+                                echo "<p id=post{$post->id} data-like-count={$like_count} data-auth-user={$auth_user->name}></p>" ;// jsで使うので空のpタグを用意
                             }
                         ?>
 
