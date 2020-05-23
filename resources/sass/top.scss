@@ -101,6 +101,11 @@
 .post_bottom {
   font-size: 10px;
 
+  .comments {
+    max-height: 150px;
+    overflow: auto;
+  }
+
   span {
     font-weight: bold;
     margin-right: 3px;
@@ -117,15 +122,45 @@
   }
 }
 
-form {
-  padding: 10px 0;
+.line_comment {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: background-color 0.3s;
+
+  &.hover-comment {
+    background-color: rgb(228, 222, 222); // js側でbuttonにカーソルが乗ったらこのクラスを付与
+  }
+
+  button {
+    background-color: inherit;
+    color: grey;
+    outline: none;
+  }
+}
+
+.comment_post {
+  padding: 10px 5px;
   background-color: #fff;
 
+  display: flex;
+  justify-content: space-between;
+  
   input {
     display: block;
-    width: 100%;
+    width: 85%;
     padding: 10px;
-    border: 0;
+    border: 1px solid rgba(0, 0, 0, 0.125);
+    border-radius: 5px;
+  }
+  
+  button {
+    width: 14%;
+
+    &[disabled] {
+      opacity: 0.5;
+      pointer-events: none;
+    }
   }
 }
 

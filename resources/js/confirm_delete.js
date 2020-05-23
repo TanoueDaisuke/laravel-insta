@@ -1,8 +1,13 @@
-const confirmDelete = () => {
-  const result = window.confirm('本当に投稿を削除しますか？')
+const confirmDelete = (e) => {
+  const result = window.confirm('本当に削除しますか？')
+
+  console.log(e.target); // i
+
+  // const deleteId = e.target.parentNode.dataset.deleteId // buttonタグのdata-delete-id
+  
   
   if (result) {
-    deleteBtn.parentNode.submit() // 送信
+    e.target.parentNode.parentNode.submit() // 送信
   }
 }
 const deleteButtons = document.getElementsByName('delete')

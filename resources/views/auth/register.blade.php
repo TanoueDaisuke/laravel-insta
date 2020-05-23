@@ -11,7 +11,7 @@
 
         <form method="POST" action="{{ route('register') }}">
             @csrf
-            <input placeholder="メールアドレス" type="email" name="email" value="{{ old('email') }}" required autocomplete="email">
+            <input placeholder="メールアドレス" type="email" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
             
             @error('email')
             <span class="error email" role="alert">
@@ -19,7 +19,7 @@
             </span>
             @enderror
 
-            <input placeholder="ユーザーネーム" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
+            <input placeholder="ユーザーネーム" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name">
 
             @error('name')
                 <span class="error name" role="alert">

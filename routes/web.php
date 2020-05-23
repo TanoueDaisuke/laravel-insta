@@ -22,6 +22,10 @@ Route::group(['middleware' => 'auth'], function () {
     ]);
 
     Route::post('/posts/{post_id}/likes', 'LikesController@toggle')->name('likes.toggle');
+    
+    Route::get('/posts/{post}/comments', 'CommentsController@index')->name('comments.index');
+    Route::post('/posts/{post}/comments', 'CommentsController@store')->name('comments.store');
+    Route::delete('/posts/{post}/comments/{comment}', 'CommentsController@destroy')->name('comments.destroy');
 });
 
 Auth::routes();

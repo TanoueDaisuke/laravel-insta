@@ -1,0 +1,186 @@
+@import '../share/share'; // shareフォルダ内のまとめ
+
+.post_wrapper {
+  width: 50%;
+  // タブレット
+  @include tab {
+    width: 80%;
+  }
+
+  // スマホ
+  @include sp {
+    width: 90%;
+  }
+
+  margin: 0 auto 20px;
+  border: 1px solid rgba(0,0,0,.125);
+
+  display: flex;
+  @include sp {
+    display: block;
+  }
+  img {
+    width: 50%; // メイン画像
+    @include sp {
+      width: 100%;
+    }
+
+    object-fit: contain;
+  }
+}
+
+.post_right {
+  width: 50%;
+  @include sp {
+    width: 100%;
+  }
+  
+  max-height: 400px; // コメントの量が多い場合は全体を400pxに制限
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  
+  background-color: #fff;
+}  
+
+.profile {
+  border-bottom: 1px solid rgba(0,0,0,.1);
+  padding: 10px;
+  display: flex;
+  align-items: center;
+    
+  img {
+    width: 30px;
+    border-radius: 50%;
+    margin-right: 10px;
+  }
+  
+  p {
+    font-size: 12px;
+  }
+  
+  i {
+    font-size: 14px;
+  }
+}
+
+.comments {
+  font-size: 10px;
+  overflow: auto;
+  border-bottom: 1px solid rgba(0,0,0,.1);
+  padding: 10px;
+
+  height: 100%; // コメントが多いときにheightが余ったとき用
+  
+  span {
+    font-weight: bold;
+    margin-right: 3px;
+  }
+  
+  p {
+    margin-bottom: 3px;
+
+    &.auther_post {
+      margin-bottom: 7px;
+      font-size: 12px;
+    }
+  }
+  
+  .line_comment {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: background-color 0.3s;
+    
+    &.hover-comment {
+      background-color: rgb(228, 222, 222); // js側でbuttonにカーソルが乗ったらこのクラスを付与
+    }
+  
+    button {
+      background-color: inherit;
+      color: grey;
+      outline: none;
+    }
+  }
+}
+
+
+.icon_form_wrap {
+  .icon_wrap {
+    padding: 10px;
+    border-bottom: 1px solid rgba(0,0,0,.1);
+  }
+}
+
+.icons {
+  font-size: 23px;
+  padding-bottom: 5px;
+  display: flex;
+  justify-content: left;
+  align-items: center;
+
+  form {
+    background-color: transparent;
+    padding: 0;
+    
+    button {
+      background-color: inherit;
+      color: black;
+      outline: none;
+      font-size: inherit;
+      padding: 0;
+
+      i.checked {
+        color: red;
+      }
+    }
+  }
+
+  .comment {
+    display: block;
+    margin-left: 5px;
+    transform: scaleX(-1); // 左右反転
+  }
+}
+
+.like_display {
+  font-size: 10px;
+
+  span {
+    font-weight: bold;
+    margin-right: 3px;
+  }
+  
+  p {
+    margin-bottom: 3px;
+  }
+}
+
+
+
+.comment_post {
+  padding: 10px 5px;
+  background-color: #fff;
+
+  display: flex;
+  justify-content: space-between;
+  
+  input {
+    display: block;
+    width: 82%;
+    padding: 7px;
+    border: 1px solid rgba(0, 0, 0, 0.125);
+    border-radius: 5px;
+  }
+  
+  button {
+    width: 17%;
+
+    &[disabled] {
+      opacity: 0.5;
+      pointer-events: none;
+    }
+  }
+}
+
+

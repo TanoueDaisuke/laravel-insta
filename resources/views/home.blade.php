@@ -54,7 +54,7 @@
                             </button>  
                         </form>
 
-                        <a href="#" class="comment"><i class="far fa-comment"></i></a> {{-- コメントアイコン --}}
+                        <a href="{{ route('comments.index', ['post' => $post]) }}" class="comment"><i class="far fa-comment"></i></a> {{-- コメントアイコン --}}
                     </div>
             
                     <div class="post_bottom">
@@ -70,7 +70,7 @@
                                     echo "<p id=post{$post->id} data-like-count={$like_count} data-auth-user={$auth_user->name}><span>{$one_liked_user}</span>, 他" . ($like_count-1) . "人が「いいね！」しました</p>";
                                 }
                             } else {
-                                echo "<p id=post{$post->id} data-like-count={$like_count} data-liked-user={$auth_user->name}></p>" ;// jsで使うので空のpタグを用意
+                                echo "<p id=post{$post->id} data-like-count={$like_count} data-auth-user={$auth_user->name}></p>" ;// jsで使うので空のpタグを用意
                             }
                         ?>
 
@@ -79,7 +79,20 @@
 
                         <div class="comments">
                             {{-- ここに他人からの複数のコメント表示 --}}
-                            <p><span>△△</span> きれい！(例)</p>
+                            @foreach($post->comments as $comment)
+                                <div class="line_comment" id="comment{{$comment->id}}">
+                                    <p><span>{{$comment->user->name}}</span> {{$comment->message}}</p> {{--１つのコメント --}}
+    
+                                    {{-- コメント投稿者がログインユーザーなら削除できるようにする --}}
+                                    @if($comment->user == $auth_user)                                
+                                        <form action="{{ route('comments.destroy', ['post' => $post, 'comment' => $comment]) }}" method="POST">
+                                            @csrf
+                                            @method('delete')
+                                            <button name="delete" type="button"><i class="fas fa-times js-comment-delete" data-comment-id="{{$comment->id}}"></i></button> {{-- 投稿削除アイコン --}}
+                                        </form>
+                                    @endif
+                                </div>
+                            @endforeach
                         </div>    
                         <p class="date">{{ $post->updated_at }}</p>            
                     </div>
@@ -87,9 +100,10 @@
             </div>
         
             {{-- コメント作成 --}}
-            <form method="GET" action="#">                
+            <form class="comment_post" method="POST" action="{{ route('comments.store', ['post' => $post]) }}">                
                 @csrf {{-- Cross-Site Request Forgeriesの対策 --}}
-                <input placeholder="コメント ..." type="text" name="message">
+                <input placeholder="コメント ..." type="text" name="message" required>
+                <button disabled>送信</button>
             </form>
         </div>
     @endforeach
@@ -98,4 +112,5 @@
 @section('scripts')
     <script src="{{ asset('/js/confirm_delete.js') }}"></script>
     <script src="{{ asset('/js/handle_like.js') }}"></script>
+    <script src="{{ asset('/js/handle_comment.js') }}"></script>
 @endsection
